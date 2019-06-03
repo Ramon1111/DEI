@@ -1,11 +1,11 @@
 <?php
   SESSION_START();
   if(isset($_POST['usuario']) && isset($_POST['contra'])){
-    $link=mysqli_connect("localhost","root","","DEI");
+    $link=mysqli_connect("localhost","root","root","DEI");
     htmlspecialchars($_POST['usuario']);
     htmlspecialchars($_POST['contra']);
     mysqli_real_escape_string($link,$_POST['usuario']);
-  	mysqli_real_escape_string($link,$_POST['contra']);
+    mysqli_real_escape_string($link,$_POST['contra']);
 
     if(!$link){
       echo "No se pudo conectar".mysqli_connect_error();
@@ -33,6 +33,8 @@
         $_SESSION['apellido']=$arre[3];
         echo 'correcto';
       }
+      else
+	echo $user.$cont;
     }
   }
   else {

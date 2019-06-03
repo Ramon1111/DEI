@@ -31,29 +31,20 @@
       </nav>
     </div>
 
-  </body>
-</html> -->
-<html>
-<head>
-<meta name="viewport" content="width=device-width" />
-<title>LED Control</title>
-</head>
-        <body>
-        LED Control:
-        <form method="get" action="gpio.php">
-                <input type="submit" value="ON" name="on">
-                <input type="submit" value="OFF" name="off">
-        </form>
-        <?php
-        $setmode17 = shell_exec("/usr/local/bin/gpio -g mode 17 out");
-        if(isset($_GET['on'])){
-                $gpio_on = shell_exec("/usr/local/bin/gpio -g write 17 1");
-                echo "LED is on";
-        }
-        else if(isset($_GET['off'])){
-                $gpio_off = shell_exec("/usr/local/bin/gpio -g write 17 0");
-                echo "LED is off";
-        }
-        ?>
-       </body>
-</html>
+  </body> </html> -->
+<?php
+require '/home/pi/vendor/autoload.php';
+use Calcinai\PHPi\Pin;
+use Calcinai\PHPi\Pin\PinFunction;
+
+$board=\Calcinai\PHPi\Factory::create();
+
+$pin=$board->getPin(17)
+           ->setFunction(PinFunction::INPUT)
+           ->setPull(Pin::PULL_UP);
+
+$pin->on('level.high',function(){
+	echo "Motion Detected\n";
+});
+$board->getLoop()->run();
+?>

@@ -46,7 +46,7 @@
 					</div>
 					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
 						<div class="text-center">
-							<img src="../Resources/logo.png" class="img-fluid">
+							<img src="../Resources/logo.PNG" class="img-fluid">
 						</div>
 					</div>
 				</div>
