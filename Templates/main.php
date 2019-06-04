@@ -33,18 +33,10 @@
 
   </body> </html> -->
 <?php
-require '/home/pi/vendor/autoload.php';
-use Calcinai\PHPi\Pin;
-use Calcinai\PHPi\Pin\PinFunction;
 
-$board=\Calcinai\PHPi\Factory::create();
+$command = escapeshellcmd('python testSendN.py');
+$newString = shell_exec($command);
+#$newString=exec(testSendN.py);
 
-$pin=$board->getPin(17)
-           ->setFunction(PinFunction::INPUT)
-           ->setPull(Pin::PULL_UP);
-
-$pin->on('level.high',function(){
-	echo "Motion Detected\n";
-});
-$board->getLoop()->run();
+echo $newString;
 ?>
