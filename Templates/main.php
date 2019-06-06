@@ -50,8 +50,9 @@
             //estado 0 significa "CERRADO", o sea, hay que abrir la puerta
             $.ajax({
               url:"abrirCerrar.php",
+              //url: "../sensors/openDoor1.py"
               data:{
-                estado: 0
+               	estado: 0
               },
               type: "POST",
               dataType: "Text",
