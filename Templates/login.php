@@ -1,8 +1,8 @@
 <?php
   SESSION_START();
   if(isset($_POST['usuario']) && isset($_POST['contra'])){
-    //$link=mysqli_connect("localhost","root","root","DEI");
-    $link=mysqli_connect("localhost","root","","DEI");
+    $link=mysqli_connect("localhost","root","root","DEI");
+    //$link=mysqli_connect("localhost","root","","DEI");
     htmlspecialchars($_POST['usuario']);
     htmlspecialchars($_POST['contra']);
     mysqli_real_escape_string($link,$_POST['usuario']);
