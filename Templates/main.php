@@ -42,11 +42,30 @@
           </div>
         </div>
       </div>
+      <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.21.7.min.js">
+      </script>
       <script>
         $('#openClose').click(function(){
           console.log($(this).html());
+          var channel = 'pubnub_onboarding_channel';
+
+          var pubnub= new PubNub({
+              subscribeKey:'sub-c-1c31c1b8-8bcb-11e9-9769-e24cdeae5ee1',
+              publishKey: 'pub-c-4872297c-41b7-4f68-ad26-ed2061493795',
+          });
+
+              alert("Test: Send message to pi");//Testing only
+              /*pubnub.publish({
+                  channel: channel,
+                  message: 'on'
+              });*/
           if($(this).html()=="Abrir puerta 1"){
-            $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
+            pubnub.publish({
+                channel: channel,
+                message: 'abrir'
+            });
+            $('#openClose').html('Cerrar puerta 1');
+            /*$(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
             //estado 0 significa "CERRADO", o sea, hay que abrir la puerta
             $.ajax({
               url:"abrirCerrar.php",
@@ -60,11 +79,16 @@
                 console.log(data);
                 $('#openClose').html('Cerrar puerta 1');
               }
-            });
+            });*/
           }
 
           else if($(this).html()=="Cerrar puerta 1"){
-            $(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
+            pubnub.publish({
+                channel: channel,
+                message: 'cerrar'
+            });
+            $('#openClose').html('Abrir puerta 1');
+            /*$(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...');
             //estado 0 significa "CERRADO", o sea, hay que abrir la puerta
             $.ajax({
               url:"abrirCerrar.php",
@@ -77,7 +101,7 @@
                 console.log(data);
                 $('#openClose').html('Abrir puerta 1');
               }
-            });
+            });*/
           }
         });
       </script>
