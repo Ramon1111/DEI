@@ -22,6 +22,13 @@
         .textBoton{
           font-size: 1.2em;
         }
+        div.row{
+  				min-height: 10rem !important;
+  			}
+        .azul{
+  				background-color: #3B3F76;
+  				color: white;
+  			}
       </style>
     </head>
     <body>
@@ -33,6 +40,7 @@
           <span class="navbar-brand mb.0 h1">DEI</span>
           <h1 class="text-left" id="welcomeText">Bienvenido <?php echo $_SESSION['nombre']; ?></h1>
         </nav>
+
         <div class="row">
           <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
             <div class="textBoton text-center">Botón para abrir y cerrar la puerta</div>
@@ -59,6 +67,19 @@
             <button type="button" id="askTemperature" class="btn btn-primary btn-lg btn-block">Checar temperatura</button>
           </div>
         </div>
+
+        <!-- <div class="row azul footer text-center justify-content-md-center px-xl-5 px-lg-5 py-4">
+  				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 px-5">
+  					<span id="copyright">Copyright © DEI: Domótica, Estructura e Inteligencia artificial</span>
+  				</div>
+  				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 px-5 py-sm-2">
+  					<span class="telefono"><i class="fas fa-mobile-alt"></i> Tel: 55-29-16-85-03</span>
+  				</div>
+  				<div class="col-xl-7 col-lg-7 col-md-10 col-sm-12 px-5 py-3">
+  					<span class="telefono">Hecho en México, Universidad Nacional Autónoma de México. Todos los derechos reservados. Esta página fue desarrollada por miembros del Programa de Alto Rendimiento Académico (PARA) de la Facultad de ingeniería.</span>
+  				</div>
+  			</div> -->
+
       </div>
       <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.21.7.min.js">
       </script>
