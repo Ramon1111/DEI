@@ -68,6 +68,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#"><i class="far fa-file-alt"></i> Estado General del Hogar</a>
                   <a class="dropdown-item" href="./doors.php"><i class="fas fa-door-open"></i> Control de Puertas</a>
+                  <a class="dropdown-item" href="./focos.php"><i class="far fa-lightbulb"></i> Control de Luces</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
@@ -165,6 +166,8 @@
               message: function(msg) {
                   if(msg.message.tipo=="1")
                     alert("Aiua, se quema tu casa");
+                  else if(msg.message.tipo=="3")
+                    console.log(msg.message.mensaje);
                   else if (msg.message.tipo=="0"){
                     var estadoGeneral=msg.message.mensaje.split(",");
                     if(estadoGeneral[0]=='0')
