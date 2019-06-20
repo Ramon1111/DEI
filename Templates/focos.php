@@ -233,6 +233,7 @@
                   if(estaVentana.val()=='0'){
                     estaVentana.val('1');
                     $('span.'+estaVentana.attr('id')).html('Encendido');
+                    $('span.'+estaVentana.attr('id')).attr('class',estaVentana.attr('id')+' onn font-weight-bolder');
                     estaVentana.data('state',estaVentana.attr('id')+'High');
                     estaVentana.html('Apagar');
                     estaVentana.attr('class','led btn btn-outline-primary my-3 subtitulo2');
@@ -240,11 +241,11 @@
                   else {
                     estaVentana.val('0');
                     $('span.'+estaVentana.attr('id')).html('Apagado');
+                    $('span.'+estaVentana.attr('id')).attr('class',estaVentana.attr('id')+' offf font-weight-bolder');
                     estaVentana.data('state',estaVentana.attr('id')+'Low');
                     estaVentana.html('Encender');
                     estaVentana.attr('class','led btn btn-primary my-3 subtitulo2');
                   }
-                  console.log(estaVentana.data('state'));
             });
           });
 
@@ -259,11 +260,10 @@
                   var estadoGeneral=msg.message.mensaje.split(",");
                   for(var i=0; i<estadoGeneral.length;i++){
                     var lugar=1+i;
-                    console.log(estadoGeneral[i]);
                     if(estadoGeneral[i]=='0'){
                       $('#led'+lugar).val('0');
                       $('span.led'+lugar).html('Apagado');
-                      $('span.led'+lugar).attr('class',"offf font-weight-bolder");
+                      $('span.led'+lugar).attr('class',"offf led"+lugar+" font-weight-bolder");
                       $('#led'+lugar).data('state','led'+lugar+'Low');
                       $('#led'+lugar).html('Encender');
                       $('#led'+lugar).attr('class','led btn btn-primary my-3 subtitulo2');
@@ -271,7 +271,7 @@
                     else {
                       $('#led'+lugar).val('1');
                       $('span.led'+lugar).html('Encendido');
-                      $('span.led'+lugar).attr('class',"onn font-weight-bolder");
+                      $('span.led'+lugar).attr('class',"onn led"+lugar+" font-weight-bolder");
                       $('#led'+lugar).data('state','led'+lugar+'High');
                       $('#led'+lugar).html('Apagar');
                       $('#led'+lugar).attr('class','led btn btn-outline-primary my-3 subtitulo2');

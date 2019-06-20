@@ -158,6 +158,7 @@
 
           $('.security').click(function(){
             var estaVentana=$(this);
+            console.log($('span.'+estaVentana.attr('id')).html());
             pubnub.publish({
                 channel: channel,
                 message: estaVentana.data('state'),
@@ -165,6 +166,7 @@
                   if(estaVentana.val()=='0'){
                     estaVentana.val('1');
                     $('span.'+estaVentana.attr('id')).html('Activado');
+                    $('span.'+estaVentana.attr('id')).attr('class','onn '+estaVentana.attr('id')+' font-weight-bolder');
                     estaVentana.data('state',estaVentana.attr('id')+'High');
                     estaVentana.html('Desactivar');
                     estaVentana.attr('class','security btn btn-outline-primary my-3 subtitulo2');
@@ -172,6 +174,7 @@
                   else {
                     estaVentana.val('0');
                     $('span.'+estaVentana.attr('id')).html('Desactivado');
+                    $('span.'+estaVentana.attr('id')).attr('class','offf '+estaVentana.attr('id')+' font-weight-bolder');
                     estaVentana.data('state',estaVentana.attr('id')+'Low');
                     estaVentana.html('Activar');
                     estaVentana.attr('class','security btn btn-primary my-3 subtitulo2');
@@ -191,11 +194,10 @@
                     var estadoGeneral=msg.message.mensaje.split(",");
                     for(var i=0; i<estadoGeneral.length;i++){
                       var lugar=1+i;
-                      console.log(estadoGeneral[i]);
                       if(estadoGeneral[i]=='0'){
                         $('#security'+lugar).val('0');
                         $('span.security'+lugar).html('Desactivado');
-                        $('span.security'+lugar).attr('class',"offf font-weight-bolder");
+                        $('span.security'+lugar).attr('class',"offf security"+lugar+" font-weight-bolder");
                         $('#security'+lugar).data('state','security'+lugar+'Low');
                         $('#security'+lugar).html('Activar');
                         $('#security'+lugar).attr('class','security btn btn-primary my-3 subtitulo2');
@@ -203,7 +205,7 @@
                       else {
                         $('#security'+lugar).val('1');
                         $('span.security'+lugar).html('Activado');
-                        $('span.security'+lugar).attr('class',"onn font-weight-bolder");
+                        $('span.security'+lugar).attr('class',"onn security"+lugar+" font-weight-bolder");
                         $('#security'+lugar).data('state','security'+lugar+'High');
                         $('#security'+lugar).html('Desactivar');
                         $('#security'+lugar).attr('class','security btn btn-outline-primary my-3 subtitulo2');
