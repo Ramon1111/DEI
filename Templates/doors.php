@@ -62,6 +62,7 @@
                   <a class="dropdown-item" href="./main.php"><i class="far fa-file-alt"></i> Estado General del Hogar</a>
                   <a class="dropdown-item" href="#"><i class="fas fa-door-open"></i> Control de Puertas</a>
                   <a class="dropdown-item" href="./focos.php"><i class="far fa-lightbulb"></i> Control de Luces</a>
+                  <a class="dropdown-item" href="./mejakiaron.php"><i class="fas fa-shield-alt"></i> Módulo de seguridad</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
@@ -69,8 +70,8 @@
                   <i class="fas fa-cog"></i> Configuración
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#"><i class="fas fa-cog-user"></i> Gestionar cuenta</a>
-                  <div class="dropdown-divider"></div>
+                  <!--<a class="dropdown-item" href="#"><i class="fas fa-cog-user"></i> Gestionar cuenta</a>
+                  <div class="dropdown-divider"></div>-->
                   <a class="dropdown-item" href="./logOut.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
                 </div>
               </li>
@@ -78,6 +79,11 @@
           </div>
         </nav>
 
+        <!--Divs para las alertas-->
+        <div id="alerta1">
+        </div>
+        <div id="alerta2">
+        </div>
 
         <div class="titulos font-weight-bolder py-4">
           <i class="fas fa-door-open"></i> Control de Puertas
@@ -193,7 +199,9 @@
           pubnub.addListener({
               message: function(msg) {
                   if(msg.message.tipo=="1")
-                    alert("Aiua, se quema tu casa");
+                    $("#alerta1").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Gas Peligroso Detectado</strong> El sensor de gases detectó una posible fuga<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+                  else if(msg.message.tipo=="3")
+                    $("#alerta2").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Intruso Detectado</strong> El sensor de movimiento detectó un posible intruso<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
                   else if (msg.message.tipo=="0"){
                     var estadoGeneral=msg.message.mensaje.split(",");
                     if(estadoGeneral[0]=='0'){

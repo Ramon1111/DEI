@@ -49,6 +49,9 @@
         .subtituloT{
           font-size: 3rem;
         }
+        .onn{
+          color:green;
+        }
       </style>
     </head>
     <body>
@@ -69,6 +72,7 @@
                   <a class="dropdown-item" href="#"><i class="far fa-file-alt"></i> Estado General del Hogar</a>
                   <a class="dropdown-item" href="./doors.php"><i class="fas fa-door-open"></i> Control de Puertas</a>
                   <a class="dropdown-item" href="./focos.php"><i class="far fa-lightbulb"></i> Control de Luces</a>
+                  <a class="dropdown-item" href="./mejakiaron.php"><i class="fas fa-shield-alt"></i> Módulo de seguridad</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
@@ -76,14 +80,19 @@
                   <i class="fas fa-cog"></i> Configuración
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#"><i class="fas fa-cog-user"></i> Gestionar cuenta</a>
-                  <div class="dropdown-divider"></div>
+                  <!--<a class="dropdown-item" href="#"><i class="fas fa-cog-user"></i> Gestionar cuenta</a>
+                  <div class="dropdown-divider"></div>-->
                   <a class="dropdown-item" href="./logOut.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
                 </div>
               </li>
             </ul>
           </div>
         </nav>
+        <!--Divs para las alertas-->
+        <div id="alerta1">
+        </div>
+        <div id="alerta2">
+        </div>
 
         <div class="titulos text-center py-3">
           <i class="far fa-file-alt"></i> Estado general del hogar
@@ -127,6 +136,122 @@
           </div>
         </div>
 
+        <hr/>
+
+        <div class="titulos font-weight-bolder py-4">
+          <i class="far fa-lightbulb"></i> Control de Luces
+        </div>
+
+        <div class="row align-items-center justify-content-center text-center my-4">
+          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
+            <div class="card border-dark my-3">
+              <div class="subtitulo1 card-header"><i class="fas fa-lightbulb"></i> Sala, comedor y cocina</div>
+              <div class="card-body my-3">
+                <p class="card-text subtitulo2">Estado: <span class="led1 font-weight-bolder"><span class="spinner-border text-dark" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </span></span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
+            <div class="card border-dark my-3">
+              <div class="subtitulo1 card-header"><i class="fas fa-lightbulb"></i> Recamara 1, Pasillo y Baño</div>
+              <div class="card-body my-3">
+                <p class="card-text subtitulo2">Estado: <span class="led2 font-weight-bolder"><span class="spinner-border text-dark" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </span></span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
+            <div class="card border-dark my-3">
+              <div class="subtitulo1 card-header"><i class="fas fa-lightbulb"></i> Pórtico y pasillo principal</div>
+              <div class="card-body my-3">
+                <p class="card-text subtitulo2">Estado: <span class="led3 font-weight-bolder"><span class="spinner-border text-dark" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </span></span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
+            <div class="card border-dark my-3">
+              <div class="subtitulo1 card-header"><i class="fas fa-lightbulb"></i> Cochera</div>
+              <div class="card-body my-3">
+                <p class="card-text subtitulo2">Estado: <span class="led4 font-weight-bolder"><span class="spinner-border text-dark" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </span></span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
+            <div class="card border-dark my-3">
+              <div class="subtitulo1 card-header"><i class="fas fa-lightbulb"></i> Recámara 2 y 3, Baño</div>
+              <div class="card-body my-3">
+                <p class="card-text subtitulo2">Estado: <span class="led5 font-weight-bolder"><span class="spinner-border text-dark" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </span></span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
+            <div class="card border-dark my-3">
+              <div class="subtitulo1 card-header"><i class="fas fa-lightbulb"></i> Luces exteriores</div>
+              <div class="card-body my-3">
+                <p class="card-text subtitulo2">Estado: <span class="led6 font-weight-bolder"><span class="spinner-border text-dark" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </span></span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr/>
+
+        <div class="titulos font-weight-bolder py-4">
+          <i class="fas fa-shield-alt"></i> Seguridad.
+        </div>
+
+        <div class="row align-items-center justify-content-center text-center my-4">
+          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
+            <div class="card border-dark my-3">
+              <div class="subtitulo1 card-header"><i class="fas fa-shield-alt"></i> Sensor de Gases </div>
+              <div class="card-body my-3">
+                <p class="card-text subtitulo2">Estado: <span class="security1 font-weight-bolder"><span class="spinner-border text-dark" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </span></span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
+            <div class="card border-dark my-3">
+              <div class="subtitulo1 card-header"><i class="fas fa-shield-alt"></i> Sensor de movimiento</div>
+              <div class="card-body my-3">
+                <p class="card-text subtitulo2">Estado: <span class="security2 font-weight-bolder"><span class="spinner-border text-dark" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </span></span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
         <div class="row azul footer text-center justify-content-md-center mt-4 px-xl-5 px-lg-5 py-4">
   				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 px-5">
   					<span id="copyright">Copyright © DEI: Domótica, Estructura e Inteligencia artificial</span>
@@ -161,13 +286,21 @@
             channel: channel,
             message: 'estado'
           });
+          pubnub.publish({
+            channel: channel,
+            message: 'estadoLeds'
+          });
+          pubnub.publish({
+            channel: channel,
+            message: 'estadoSecurity'
+          });
 
           pubnub.addListener({
               message: function(msg) {
                   if(msg.message.tipo=="1")
-                    alert("Aiua, se quema tu casa");
+                    $("#alerta1").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Gas Peligroso Detectado</strong> El sensor de gases detectó una posible fuga<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
                   else if(msg.message.tipo=="3")
-                    console.log(msg.message.mensaje);
+                    $("#alerta2").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Intruso Detectado</strong> El sensor de movimiento detectó un posible intruso<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
                   else if (msg.message.tipo=="0"){
                     var estadoGeneral=msg.message.mensaje.split(",");
                     if(estadoGeneral[0]=='0')
@@ -181,6 +314,37 @@
                       $('#puertaGarage').html('<i class="fas fa-lock-open"></i> Abierta');
                     $('#temperatura').html(estadoGeneral[2]+' °C');
                   }
+                  else if (msg.message.tipo=="4"){
+                    var estadoGeneral=msg.message.mensaje.split(",");
+                    for(var i=0; i<estadoGeneral.length;i++){
+                      var lugar=1+i;
+                      console.log(estadoGeneral[i]);
+                      if(estadoGeneral[i]=='0'){
+                        $('span.led'+lugar).html('Apagado');
+                        $('span.led'+lugar).attr('class',"offf font-weight-bolder");
+                      }
+                      else{
+                        $('span.led'+lugar).html('Encendido');
+                        $('span.led'+lugar).attr('class',"onn font-weight-bolder");
+                      }
+                    }
+                  }
+                  else if (msg.message.tipo=="5"){
+                    var estadoGeneral=msg.message.mensaje.split(",");
+                    for(var i=0; i<estadoGeneral.length;i++){
+                      var lugar=1+i;
+                      console.log(estadoGeneral[i]);
+                      if(estadoGeneral[i]=='0'){
+                        $('span.security'+lugar).html('Desactivado');
+                        $('span.security'+lugar).attr('class',"offf font-weight-bolder");
+                      }
+                      else {
+                        $('span.security'+lugar).html('Activado');
+                        $('span.security'+lugar).attr('class',"onn font-weight-bolder");
+                      }
+                    }
+                  }
+
               },
               presence: function(presenceEvent) {
                   // handle presence

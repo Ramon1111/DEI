@@ -41,6 +41,9 @@
         .subtitulo2{
           font-size: 1.5rem;
         }
+        .onn{
+          color:green;
+        }
       </style>
     </head>
     <body>
@@ -62,6 +65,7 @@
                   <a class="dropdown-item" href="./main.php"><i class="far fa-file-alt"></i> Estado General del Hogar</a>
                   <a class="dropdown-item" href="./doors.php"><i class="fas fa-door-open"></i> Control de Puertas</a>
                   <a class="dropdown-item" href="#"><i class="far fa-lightbulb"></i> Control de Luces</a>
+                  <a class="dropdown-item" href="./mejakiaron.php"><i class="fas fa-shield-alt"></i> Módulo de seguridad</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
@@ -69,8 +73,8 @@
                   <i class="fas fa-cog"></i> Configuración
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#"><i class="fas fa-cog-user"></i> Gestionar cuenta</a>
-                  <div class="dropdown-divider"></div>
+                  <!--<a class="dropdown-item" href="#"><i class="fas fa-cog-user"></i> Gestionar cuenta</a>
+                  <div class="dropdown-divider"></div>-->
                   <a class="dropdown-item" href="./logOut.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
                 </div>
               </li>
@@ -247,30 +251,33 @@
 
           pubnub.addListener({
               message: function(msg) {
-                  if(msg.message.tipo=="1")
-                    alert("Aiua, se quema tu casa");
-                  else if (msg.message.tipo=="4"){
-                    var estadoGeneral=msg.message.mensaje.split(",");
-                    console.log(estadoGeneral.length);
-                    for(var i=0; i<estadoGeneral.length;i++){
-                      var lugar=1+i;
-                      console.log(estadoGeneral[i]);
-                      if(estadoGeneral[i]=='0'){
-                        $('#led'+lugar).val('0');
-                        $('span.led'+lugar).html('Apagado');
-                        $('#led'+lugar).data('state','led'+lugar+'Low');
-                        $('#led'+lugar).html('Encender');
-                        $('#led'+lugar).attr('class','led btn btn-primary my-3 subtitulo2');
-                      }
-                      else {
-                        $('#led'+lugar).val('1');
-                        $('span.led'+lugar).html('Encendido');
-                        $('#led'+lugar).data('state','led'+lugar+'High');
-                        $('#led'+lugar).html('Apagar');
-                        $('#led'+lugar).attr('class','led btn btn-outline-primary my-3 subtitulo2');
-                      }
+                if(msg.message.tipo=="1")
+                  $("#alerta1").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Gas Peligroso Detectado</strong> El sensor de gases detectó una posible fuga<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+                else if(msg.message.tipo=="3")
+                  $("#alerta2").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Intruso Detectado</strong> El sensor de movimiento detectó un posible intruso<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+                else if (msg.message.tipo=="4"){
+                  var estadoGeneral=msg.message.mensaje.split(",");
+                  for(var i=0; i<estadoGeneral.length;i++){
+                    var lugar=1+i;
+                    console.log(estadoGeneral[i]);
+                    if(estadoGeneral[i]=='0'){
+                      $('#led'+lugar).val('0');
+                      $('span.led'+lugar).html('Apagado');
+                      $('span.led'+lugar).attr('class',"offf font-weight-bolder");
+                      $('#led'+lugar).data('state','led'+lugar+'Low');
+                      $('#led'+lugar).html('Encender');
+                      $('#led'+lugar).attr('class','led btn btn-primary my-3 subtitulo2');
+                    }
+                    else {
+                      $('#led'+lugar).val('1');
+                      $('span.led'+lugar).html('Encendido');
+                      $('span.led'+lugar).attr('class',"onn font-weight-bolder");
+                      $('#led'+lugar).data('state','led'+lugar+'High');
+                      $('#led'+lugar).html('Apagar');
+                      $('#led'+lugar).attr('class','led btn btn-outline-primary my-3 subtitulo2');
                     }
                   }
+                }
               },
               presence: function(presenceEvent) {
                   console.log(presenceEvent);

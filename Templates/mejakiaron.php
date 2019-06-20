@@ -41,6 +41,9 @@
         .subtitulo2{
           font-size: 1.5rem;
         }
+        .onn{
+          color:green;
+        }
       </style>
     </head>
     <body>
@@ -70,8 +73,8 @@
                   <i class="fas fa-cog"></i> Configuración
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#"><i class="fas fa-cog-user"></i> Gestionar cuenta</a>
-                  <div class="dropdown-divider"></div>
+                  <!--<a class="dropdown-item" href="#"><i class="fas fa-cog-user"></i> Gestionar cuenta</a>
+                  <div class="dropdown-divider"></div>-->
                   <a class="dropdown-item" href="./logOut.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
                 </div>
               </li>
@@ -79,6 +82,11 @@
           </div>
         </nav>
 
+        <!--Divs para las alertas-->
+        <div id="alerta1">
+        </div>
+        <div id="alerta2">
+        </div>
 
         <div class="titulos font-weight-bolder py-4">
           <i class="fas fa-shield-alt"></i> Módulo de seguridad.
@@ -176,16 +184,18 @@
           pubnub.addListener({
               message: function(msg) {
                   if(msg.message.tipo=="1")
-                    alert("Aiua, se quema tu casa");
+                    $("#alerta1").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Gas Peligroso Detectado</strong> El sensor de gases detectó una posible fuga<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+                  else if(msg.message.tipo=="3")
+                    $("#alerta2").html("<div class='alert alert-danger alert-dismissible fade show' role='alert'><strong>Intruso Detectado</strong> El sensor de movimiento detectó un posible intruso<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
                   else if (msg.message.tipo=="5"){
                     var estadoGeneral=msg.message.mensaje.split(",");
-                    console.log(estadoGeneral.length);
                     for(var i=0; i<estadoGeneral.length;i++){
                       var lugar=1+i;
                       console.log(estadoGeneral[i]);
                       if(estadoGeneral[i]=='0'){
                         $('#security'+lugar).val('0');
                         $('span.security'+lugar).html('Desactivado');
+                        $('span.security'+lugar).attr('class',"offf font-weight-bolder");
                         $('#security'+lugar).data('state','security'+lugar+'Low');
                         $('#security'+lugar).html('Activar');
                         $('#security'+lugar).attr('class','security btn btn-primary my-3 subtitulo2');
@@ -193,6 +203,7 @@
                       else {
                         $('#security'+lugar).val('1');
                         $('span.security'+lugar).html('Activado');
+                        $('span.security'+lugar).attr('class',"onn font-weight-bolder");
                         $('#security'+lugar).data('state','security'+lugar+'High');
                         $('#security'+lugar).html('Desactivar');
                         $('#security'+lugar).attr('class','security btn btn-outline-primary my-3 subtitulo2');
