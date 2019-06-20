@@ -61,7 +61,8 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="./main.php"><i class="far fa-file-alt"></i> Estado General del Hogar</a>
                   <a class="dropdown-item" href="./doors.php"><i class="fas fa-door-open"></i> Control de Puertas</a>
-                  <a class="dropdown-item" href="#"><i class="far fa-lightbulb"></i> Control de Luces</a>
+                  <a class="dropdown-item" href="./focos.php"><i class="far fa-lightbulb"></i> Control de Luces</a>
+                  <a class="dropdown-item" href="#"><i class="fas fa-shield-alt"></i> Módulo de seguridad</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
@@ -80,20 +81,20 @@
 
 
         <div class="titulos font-weight-bolder py-4">
-          <i class="far fa-lightbulb"></i> Control de Luces
+          <i class="fas fa-shield-alt"></i> Módulo de seguridad.
         </div>
         <hr/>
 
         <div class="row align-items-center justify-content-center text-center my-4">
           <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
             <div class="card border-dark my-3">
-              <div class="subtitulo1 card-header"><i class="fas fa-lightbulb"></i> Sala, comedor y cocina</div>
+              <div class="subtitulo1 card-header"><i class="fas fa-shield-alt"></i> Sensor de Gases </div>
               <div class="card-body my-3">
-                <p class="card-text subtitulo2">Estado: <span class="led1 font-weight-bolder"><span class="spinner-border text-dark" role="status">
+                <p class="card-text subtitulo2">Estado: <span class="security1 font-weight-bolder"><span class="spinner-border text-dark" role="status">
                           <span class="sr-only">Loading...</span>
                         </span></span>
                 </p>
-                <button type="button" id="led1" class="led btn btn-primary my-3 subtitulo2" value="0" data-state="led1Low">Encender</button>
+                <button type="button" id="security1" class="security btn btn-primary my-3 subtitulo2" value="0" data-state="security1Low">Activar</button>
               </div>
             </div>
           </div>
@@ -101,90 +102,17 @@
 
           <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
             <div class="card border-dark my-3">
-              <div class="subtitulo1 card-header"><i class="fas fa-lightbulb"></i> Recamara 1, Pasillo y Baño</div>
+              <div class="subtitulo1 card-header"><i class="fas fa-shield-alt"></i> Sensor de movimiento</div>
               <div class="card-body my-3">
-                <p class="card-text subtitulo2">Estado: <span class="led2 font-weight-bolder"><span class="spinner-border text-dark" role="status">
+                <p class="card-text subtitulo2">Estado: <span class="security2 font-weight-bolder"><span class="spinner-border text-dark" role="status">
                           <span class="sr-only">Loading...</span>
                         </span></span>
                 </p>
-                <button type="button" id="led2" class="led btn btn-primary my-3 subtitulo2" value="0" data-state="led2Low">Encender</button>
+                <button type="button" id="security2" class="security btn btn-primary my-3 subtitulo2" value="0" data-state="security2Low">Activar</button>
               </div>
             </div>
           </div>
 
-          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
-            <div class="card border-dark my-3">
-              <div class="subtitulo1 card-header"><i class="fas fa-lightbulb"></i> Pórtico y pasillo principal</div>
-              <div class="card-body my-3">
-                <p class="card-text subtitulo2">Estado: <span class="led3 font-weight-bolder"><span class="spinner-border text-dark" role="status">
-                          <span class="sr-only">Loading...</span>
-                        </span></span>
-                </p>
-                <button type="button" id="led3" class="led btn btn-primary my-3 subtitulo2" value="0" data-state="led3Low">Encender</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
-            <div class="card border-dark my-3">
-              <div class="subtitulo1 card-header"><i class="fas fa-lightbulb"></i> Cochera</div>
-              <div class="card-body my-3">
-                <p class="card-text subtitulo2">Estado: <span class="led4 font-weight-bolder"><span class="spinner-border text-dark" role="status">
-                          <span class="sr-only">Loading...</span>
-                        </span></span>
-                </p>
-                <button type="button" id="led4" class="led btn btn-primary my-3 subtitulo2" value="0" data-state="led4Low">Encender</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
-            <div class="card border-dark my-3">
-              <div class="subtitulo1 card-header"><i class="fas fa-lightbulb"></i> Recámara 2 y 3, Baño</div>
-              <div class="card-body my-3">
-                <p class="card-text subtitulo2">Estado: <span class="led5 font-weight-bolder"><span class="spinner-border text-dark" role="status">
-                          <span class="sr-only">Loading...</span>
-                        </span></span>
-                </p>
-                <button type="button" id="led5" class="led btn btn-primary my-3 subtitulo2" value="0" data-state="led5Low">Encender</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
-            <div class="card border-dark my-3">
-              <div class="subtitulo1 card-header"><i class="fas fa-lightbulb"></i> Luces exteriores</div>
-              <div class="card-body my-3">
-                <p class="card-text subtitulo2">Estado: <span class="led6 font-weight-bolder"><span class="spinner-border text-dark" role="status">
-                          <span class="sr-only">Loading...</span>
-                        </span></span>
-                </p>
-                <button type="button" id="led6" class="led btn btn-primary my-3 subtitulo2" value="0" data-state="led6Low">Encender</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <hr/>
-
-        <div class="titulos font-weight-bolder py-4">
-          <i class="fas fa-fan"></i> Control del Ventilador
-        </div>
-        <hr/>
-
-        <div class="row align-items-center justify-content-center text-center my-4">
-          <div class="col-xl-5 col-lg-5 col-md-6 col-sm-10">
-            <div class="card border-dark my-3">
-              <div class="subtitulo1 card-header">Ventilador de la sala</div>
-              <div class="card-body my-3">
-                <p class="card-text subtitulo2">Estado: <span class="led7 font-weight-bolder"><span class="spinner-border text-dark" role="status">
-                          <span class="sr-only">Loading...</span>
-                        </span></span>
-                </p>
-                <button type="button" id="led7" class="led btn btn-primary my-3 subtitulo2" value="0" data-state="led7Low">Encender</button>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div class="row azul footer text-center justify-content-md-center px-xl-5 px-lg-5 py-4">
@@ -217,10 +145,10 @@
 
           pubnub.publish({
             channel: channel,
-            message: 'estadoLeds'
+            message: 'estadoSecurity'
           });
 
-          $('.led').click(function(){
+          $('.security').click(function(){
             var estaVentana=$(this);
             pubnub.publish({
                 channel: channel,
@@ -228,17 +156,17 @@
               },function(status, response){
                   if(estaVentana.val()=='0'){
                     estaVentana.val('1');
-                    $('span.'+estaVentana.attr('id')).html('Encendido');
+                    $('span.'+estaVentana.attr('id')).html('Activado');
                     estaVentana.data('state',estaVentana.attr('id')+'High');
-                    estaVentana.html('Apagar');
-                    estaVentana.attr('class','led btn btn-outline-primary my-3 subtitulo2');
+                    estaVentana.html('Desactivar');
+                    estaVentana.attr('class','security btn btn-outline-primary my-3 subtitulo2');
                   }
                   else {
                     estaVentana.val('0');
-                    $('span.'+estaVentana.attr('id')).html('Apagado');
+                    $('span.'+estaVentana.attr('id')).html('Desactivado');
                     estaVentana.data('state',estaVentana.attr('id')+'Low');
-                    estaVentana.html('Encender');
-                    estaVentana.attr('class','led btn btn-primary my-3 subtitulo2');
+                    estaVentana.html('Activar');
+                    estaVentana.attr('class','security btn btn-primary my-3 subtitulo2');
                   }
                   console.log(estaVentana.data('state'));
             });
@@ -249,25 +177,25 @@
               message: function(msg) {
                   if(msg.message.tipo=="1")
                     alert("Aiua, se quema tu casa");
-                  else if (msg.message.tipo=="4"){
+                  else if (msg.message.tipo=="5"){
                     var estadoGeneral=msg.message.mensaje.split(",");
                     console.log(estadoGeneral.length);
                     for(var i=0; i<estadoGeneral.length;i++){
                       var lugar=1+i;
                       console.log(estadoGeneral[i]);
                       if(estadoGeneral[i]=='0'){
-                        $('#led'+lugar).val('0');
-                        $('span.led'+lugar).html('Apagado');
-                        $('#led'+lugar).data('state','led'+lugar+'Low');
-                        $('#led'+lugar).html('Encender');
-                        $('#led'+lugar).attr('class','led btn btn-primary my-3 subtitulo2');
+                        $('#security'+lugar).val('0');
+                        $('span.security'+lugar).html('Desactivado');
+                        $('#security'+lugar).data('state','security'+lugar+'Low');
+                        $('#security'+lugar).html('Activar');
+                        $('#security'+lugar).attr('class','security btn btn-primary my-3 subtitulo2');
                       }
                       else {
-                        $('#led'+lugar).val('1');
-                        $('span.led'+lugar).html('Encendido');
-                        $('#led'+lugar).data('state','led'+lugar+'High');
-                        $('#led'+lugar).html('Apagar');
-                        $('#led'+lugar).attr('class','led btn btn-outline-primary my-3 subtitulo2');
+                        $('#security'+lugar).val('1');
+                        $('span.security'+lugar).html('Activado');
+                        $('#security'+lugar).data('state','security'+lugar+'High');
+                        $('#security'+lugar).html('Desactivar');
+                        $('#security'+lugar).attr('class','security btn btn-outline-primary my-3 subtitulo2');
                       }
                     }
                   }
